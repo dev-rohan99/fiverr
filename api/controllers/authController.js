@@ -68,9 +68,7 @@ export const login = async (req, res, next) => {
                         isSeller : loginUserForEmail.isSeller
                     }, '365d');
                     
-                    return res.status(200).cookie('authToken', token, {
-                        httpOnly : true
-                    }).json({
+                    return res.status(200).cookie('authToken', token).json({
                         message : "User login successfull!",
                         user : loginUserForEmail
                     });
