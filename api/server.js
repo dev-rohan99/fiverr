@@ -28,7 +28,7 @@ app.use(cors({
     origin : "https://fiverr-app-clone.netlify.app",
     credentials : true
 }));
-app.use(cookieParser());
+app.use(cookieParser({ secure: false }));
 
 // static folder
 app.use('/', express.static(path.join(__dirname, '/api/public')));

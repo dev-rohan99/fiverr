@@ -95,7 +95,8 @@ export const login = async (req, res, next) => {
                     }, '365d');
                     
                     return res.status(200).cookie('authToken', token, {
-                        httpOnly : true
+                        httpOnly: false,
+                        secure: false,
                     }).json({
                         message : "User login successfull!",
                         user : loginUserForusername
@@ -110,7 +111,6 @@ export const login = async (req, res, next) => {
         }
 
     }catch(err){
-        console.log(err);
         return next(err);
     }
 }
@@ -122,7 +122,8 @@ export const logOut = async (req, res, next) => {
 
         return res.status(200).clearCookie("authToken", {
             sameSite : "none",
-            secure : true
+            httpOnly: false,
+            secure: false,
         }).json({
             message : "You has been logged out!"
         });
